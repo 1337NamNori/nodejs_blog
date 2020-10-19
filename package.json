@@ -33,7 +33,8 @@
   "homepage": "https://github.com/1337NamNori/nodejs_blog#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^5.1.0"
+    "express-handlebars": "^5.1.0",
+    "mongoose": "^5.10.9"
   },
   "devDependencies": {
     "husky": "^4.3.0",
