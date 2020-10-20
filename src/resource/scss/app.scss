@@ -3,3 +3,17 @@
 .card-course-item {
     margin-top: 20px;
 }
+.input {
+    display: flex;
+    flex-direction: row;
+}
+.input-item {
+    margin-left: 10px;
+}
+
+.user-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
