@@ -22,6 +22,18 @@ app.use(express.json());
 
 app.use(methodOverride('_method'));
 
+app.use(bacBaoVe);
+
+function bacBaoVe(req, res, next) {
+    if (['vevip', 'vethuong'].includes(req.query.ve)) {
+        req.face = 'abc';
+        return next();
+    }
+    res.status(403).json({
+        message: 'access denied',
+    });
+}
+
 //HTTP logger
 //app.use(morgan('combined'));
 //Template Engine
