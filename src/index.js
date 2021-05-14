@@ -3,12 +3,11 @@ const path = require('path');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 
-
 const app = express();
 const port = 3000;
 
 // HTTP Logger
-app.use(morgan('combined'));
+// app.use(morgan('combined'));
 
 // Static Folder
 app.use(express.static(path.join(__dirname, 'public')));
@@ -19,6 +18,10 @@ app.engine('hbs', exphbs({
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, '/resources/views'));
+
+// Middlewares
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Routes
 app.get('/', (req, res) => {
