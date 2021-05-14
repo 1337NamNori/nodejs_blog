@@ -10,6 +10,9 @@ const port = 3000;
 // HTTP Logger
 app.use(morgan('combined'));
 
+// Static Folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Template Engine
 app.engine('hbs', exphbs({
     extname: '.hbs'
