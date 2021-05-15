@@ -1,0 +1,25 @@
+<div>
+    <div class="row">
+        <a href="/me/stored/courses" class="mt-2 mb-2"><i class="fas fa-arrow-left"></i>  Quay lại trang Khóa học của tôi</a>
+        <h2 class="mb-4">Chỉnh sửa khóa học</h2>
+        <form action="/courses/{{course._id}}?_method=PUT" method="POST">
+            <div class="mb-3">
+                <label for="courseName" class="form-label">Tên khóa học</label>
+                <input type="text" class="form-control" id="courseName" name="name" value="{{course.name}}" required>
+            </div>
+            <div class="mb-3">
+                <label for="courseDescription" class="form-label">Mô tả khóa học</label>
+                <textarea class="form-control" id="courseDescription" name="description"
+                    rows="3">{{course.description}}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="courseVideoID" class="form-label">Video ID</label>
+                <input type="text" class="form-control" id="courseVideoID" name="videoID" value="{{course.videoID}}"
+                    required>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Cập nhật</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -21,6 +21,23 @@ class CoursesController {
         const course = new Course(formData);
         course.save().then(res.redirect('/')).catch(next);
     }
+    edit(req, res, next) {
+        Course.findOne({ _id: req.params.id })
+            .then((course) =>
+                res.render('courses/edit', {
+                    title: 'Sửa khóa học',
+                    course: mongooseToObject(course),
+                }),
+            )
+            .catch(next);
+    }
+    update(req, res, next) {
+        const formData = req.body;
+        formData.updatedTime = Date.now();
+        Course.updateOne({ _id: req.params.id }, formData)
+            .then(res.redirect('/me/stored/courses'))
+            .catch(next);
+    }
 }
 
 module.exports = new CoursesController();
