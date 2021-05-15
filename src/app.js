@@ -15,15 +15,18 @@ const port = 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Template Engine
-app.engine('hbs', exphbs({
-    extname: '.hbs'
-}));
+app.engine(
+    'hbs',
+    exphbs({
+        extname: '.hbs',
+    }),
+);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, '/resources/views'));
 
 // Middlewares
-        app.use(express.urlencoded({ extended: true }));
-                app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Routes
 route(app);
