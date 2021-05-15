@@ -5,11 +5,16 @@ const exphbs = require('express-handlebars');
 
 const route = require('./routes/index.js');
 
+const db = require('./config/db/index.js');
+
 const app = express();
 const port = 3000;
 
 // HTTP Logger
 // app.use(morgan('combined'));
+
+// Connect MongoDB
+db.connect();
 
 // Static Folder
 app.use(express.static(path.join(__dirname, 'public')));
