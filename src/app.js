@@ -3,6 +3,8 @@ const path = require('path');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 
+const route = require('./routes/index.js');
+
 const app = express();
 const port = 3000;
 
@@ -24,9 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Routes
-app.get('/', (req, res) => {
-    res.render('home');
-});
+route(app);
 
 // Listen port 3000
 app.listen(port, () => console.log('listening on port ' + port));
