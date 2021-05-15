@@ -1,0 +1,39 @@
+<div class="mt-5">
+    <div class="row course-row">
+        <div class="col-sm-3">
+            <div class="course-first-col">
+                <p class="mt-2 course-detail-header">Hãy đăng ký khóa học này ngay hôm nay!</p>
+                <button type="button" class="btn btn-primary course-detail-button">Học ngay</button>
+                <ul class="mt-5 course-detail-list">
+                    <li class="mt-2 course-detail-item">
+                        <i class="fas fa-level-up-alt"></i>
+                        Trình độ cơ bản
+                    </li>
+                    <li class="mt-2 course-detail-item">
+                        <i class="fas fa-film"></i>
+                        Tổng số <strong> 8 </strong> bài học
+                    </li>
+                    <li class="mt-2 course-detail-item">
+                        <i class="fas fa-clock"></i>
+                        Thời lượng <strong>02 giờ 15 phút</strong>
+                    </li>
+                    <li class="mt-2 course-detail-item">
+                        <i class="fas fa-battery-three-quarters"></i>
+                        Truy cập mọi lúc mọi nơi
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="course-second-col">
+
+                <h2 class="course-name">{{course.name}}</h2>
+                <iframe class="mt-4 course-iframe" src="https://www.youtube.com/embed/{{course.videoID}}"
+                    title="{{course.name}}" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                <p class="mt-4 course-description">{{course.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
