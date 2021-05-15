@@ -22,8 +22,8 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, '/resources/views'));
 
 // Middlewares
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+        app.use(express.urlencoded({ extended: true }));
+                app.use(express.json());
 
 // Routes
 route(app);
