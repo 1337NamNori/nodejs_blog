@@ -5,7 +5,6 @@ const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 
 const route = require('./routes/index.js');
-
 const db = require('./config/db/index.js');
 
 const app = express();
@@ -41,4 +40,6 @@ app.use(methodOverride('_method'));
 route(app);
 
 // Listen port 3000
-app.listen(port, () => console.log('listening on port ' + port));
+app.listen(port, () =>
+    console.log('listening on port ' + port + ` http://localhost:${port}`),
+);
