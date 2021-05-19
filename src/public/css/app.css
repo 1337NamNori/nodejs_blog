@@ -40,3 +40,7 @@ a {
 
 .course-detail-button {
   font-size: 20px; }
+
+.select-form-group {
+  width: 250px;
+  margin-left: 32px; }
