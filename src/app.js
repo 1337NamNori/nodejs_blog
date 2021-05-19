@@ -7,6 +7,8 @@ const methodOverride = require('method-override');
 const route = require('./routes/index.js');
 const db = require('./config/db/index.js');
 
+const SortMiddleware = require('./app/middlewares/SortMiddleware.js');
+
 const app = express();
 const port = 3000;
 
@@ -26,6 +28,26 @@ app.engine(
         extname: '.hbs',
         helpers: {
             sum: (a, b) => a + b,
+            sort: (field, sort) => {
+                const sortType = field === sort.field ? sort.type : 'default';
+                const icons = {
+                    default: 'fas fa-sort',
+                    desc: 'fas fa-sort-amount-down',
+                    asc: 'fas fa-sort-amount-down-alt',
+                };
+                const types = {
+                    default: 'desc',
+                    desc: 'asc',
+                    asc: 'desc',
+                };
+
+                const icon = icons[sortType];
+                const type = types[sortType];
+
+                return `<a href="?_sort&field=${field}&type=${type}">
+                            <i class="${icon}"></i>
+                        </a>`;
+            },
         },
     }),
 );
@@ -36,6 +58,10 @@ app.set('views', path.join(__dirname, '/resources/views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
+
+// Custom middleware
+app.use(SortMiddleware);
+
 // Routes
 route(app);
 

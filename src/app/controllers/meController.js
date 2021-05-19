@@ -4,7 +4,15 @@ const { multipleMongooseToObject } = require('../../util/mongoose.js');
 class MeController {
     // [GET] me/stored/courses
     storedCourses(req, res, next) {
-        Promise.all([Course.find({}), Course.countDocumentsDeleted()])
+        let courseQuery = Course.find({});
+
+        if (res.locals._sort.enabled) {
+            courseQuery = courseQuery.sort({
+                [res.locals._sort.field]: res.locals._sort.type,
+            });
+        }
+
+        Promise.all([courseQuery, Course.countDocumentsDeleted()])
             .then(([courses, deletedCount]) =>
                 res.render('me/stored-courses', {
                     title: 'Khóa học của tôi',
@@ -18,7 +26,15 @@ class MeController {
 
     // [GET] me/deleted/courses
     deletedCourses(req, res, next) {
-        Course.findDeleted({})
+        let courseQuery = Course.findDeleted({});
+
+        if (res.locals._sort.enabled) {
+            courseQuery = courseQuery.sort({
+                [res.locals._sort.field]: res.locals._sort.type,
+            });
+        }
+
+        courseQuery
             .then((courses) =>
                 res.render('me/deleted-courses', {
                     title: 'Thùng rác',
